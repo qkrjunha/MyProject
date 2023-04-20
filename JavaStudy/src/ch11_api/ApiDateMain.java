@@ -63,7 +63,7 @@ public class ApiDateMain {
 		System.out.println(strToday);
 
 		System.out.println("\n==========================\n");
-
+		
 		// 3. System 클래스 사용
 		// 1970년 1월 1일 기준으로 현재까지 경과된 시간
 		long longToday = System.currentTimeMillis();
