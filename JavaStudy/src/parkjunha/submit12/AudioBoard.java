@@ -9,12 +9,12 @@ public class AudioBoard extends Board {
 	}
 	
 	public AudioBoard(int num, String name, String day, String nayong, String audio) {
-		super(num, name, day, nayong);
+		super( name, day, nayong);
 		this.audio = audio;
 	}
 	@Override
 	public String toString() {
-		return "AudioBoard [num=" + super.getNum() + ", name=" + super.getName() + ", day=" + super.getDay() + ", nayong=" + super.getNayong() + ", audio=" + audio
+		return "AudioBoard [num=" + super.getNum() + ", name=" + super.getName() + ", day=" + super.getDay() + ", nayong=" + super.getContent() + ", audio=" + audio
 				+ "]";
 	}
 

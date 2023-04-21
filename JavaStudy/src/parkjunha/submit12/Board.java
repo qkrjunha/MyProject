@@ -1,24 +1,29 @@
 package parkjunha.submit12;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class Board {
 	private int num;
 	private String name;
 	private String day;
-	private String nayong;
+	private String content;
 	
 	public Board() {
 		
 	}
-	public Board(int num, String name, String day, String nayong) {
-		super();
-		this.num = num;
+	public Board(String name, String day, String content) {
+		BoardDB db = BoardDB.getInstance();
+		this.num = db.makeNumber();
 		this.name = name;
+//		Date currentTime = new Date();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		this.day = day;
-		this.nayong = nayong;
+		this.content = content;
 	}
 	@Override
 	public String toString() {
-		return "Board [num=" + num + ", name=" + name + ", day=" + day + ", nayong=" + nayong + "]";
+		return "Board [num=" + num + ", name=" + name + ", day=" + day + ", content=" + content + "]";
 	}
 	public int getNum() {
 		return num;
@@ -38,11 +43,11 @@ public class Board {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public String getNayong() {
-		return nayong;
+	public String getContent() {
+		return content;
 	}
-	public void setNayong(String nayong) {
-		this.nayong = nayong;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }
