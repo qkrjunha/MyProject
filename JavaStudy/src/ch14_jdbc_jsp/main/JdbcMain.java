@@ -64,7 +64,6 @@ public class JdbcMain {
 				student.setStuPassword(pw);
 				
 				StudentVO login = stuService.login(student);
-				
 				if(login.getStuId() != null) {
 					// 로그인 성공
 					System.out.println(login.getStuName() + "님 환영합니다.");
