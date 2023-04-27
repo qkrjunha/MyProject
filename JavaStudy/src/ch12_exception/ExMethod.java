@@ -36,15 +36,16 @@ public class ExMethod {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		// 에러 처리를 어디서 할지 선택
 		
+		
+		
 		Date temp;
 		try {
 			temp = sdf.parse(date);
-		} catch (Exception e) {
-			
+			return temp.getTime();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return 0;
-		//return temp.getTime();
 	}
 
 }
