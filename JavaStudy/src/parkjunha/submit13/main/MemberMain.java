@@ -64,11 +64,24 @@ public class MemberMain {
 						}
 						
 						if(select == 1) {
+						System.out.println("글 제목을 입력해주세요.");
+						String title = scan.nextLine();
+						
+						System.out.println("글 내용을 입력해주세요.");
+						String content = scan.nextLine();
+						
+						System.out.println("글이 작성되었습니다.");
+						}else if( select == 2) {
 							
-						}
+						
+					}else if(select ==3) {
+						break;
+					}else {
+						System.out.println("다시 입력해주세요.");
 					}
 				}
 			}
 		}
+	}
 	}
 }

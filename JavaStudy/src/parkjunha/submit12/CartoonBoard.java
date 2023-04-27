@@ -1,26 +1,30 @@
 package parkjunha.submit12;
 
 public class CartoonBoard extends Board{
+	private String img;
 
-	private String image;
-	
-	public CartoonBoard(int num, String name, String day, String nayong, String image) {
-		super( name, day, nayong);
-		this.image = image;
+	public CartoonBoard() {
+		super();
 	}
+
+	public CartoonBoard(int no, String title
+			, String content, String date, String img) {
+		super(no, title, content, date);
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
-		return "CartoonBoard [num=" + super.getNum() + ", name=" + super.getName() + ", day=" + super.getDay() + ", nayong=" + super.getContent() + ", image="
-				+ image + "]";
+		return super.toString() + "[img=" + img + "]";
 	}
 
-	public String getImage() {
-		return image;
+	public String getImg() {
+		return img;
 	}
-	public void setImage(String image) {
-		this.image = image;
+
+	public void setImg(String img) {
+		this.img = img;
 	}
-	
-	
+
 	
 }
