@@ -52,7 +52,7 @@ public class jdbcInsert {
 			// 위에서부터 ?를 채워나가며 
 			// 위에서부터 ?의 인덱스는 1부터 증가한다.
 			int idx = 1;
-			ps.setString(idx++,"stu_score");
+			ps.setString(idx++,"d001");
 			ps.setString(idx++,"123d");
 			ps.setString(idx++,"칼빵");
 			ps.setInt(idx++, 60);

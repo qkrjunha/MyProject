@@ -5,21 +5,24 @@ public class BoardVO {
 	private int num;
 	private String title;
 	private String content;
+	private String author;
 	private String date;
-	
-	public BoardVO() {}
-	
-	public BoardVO(int num, String title, String content, String date) {
+
+	public BoardVO() {
+	}
+
+	public BoardVO(int num, String title, String content, String author, String date) {
 		super();
 		this.num = num;
 		this.title = title;
 		this.content = content;
+		this.author = author;
 		this.date = date;
 	}
 
 	@Override
 	public String toString() {
-		return "BoardVO [num=" + num + ", title=" + title + ", content=" + content + ", date=" + date + "]";
+		return  "[ " + num + " | " + title + " | " + content + " | " + author + "]";
 	}
 
 	public int getNum() {
@@ -44,6 +47,14 @@ public class BoardVO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getDate() {

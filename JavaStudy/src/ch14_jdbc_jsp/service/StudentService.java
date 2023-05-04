@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import ch12_exception.BizException;
 import ch14_jdbc_jsp.context.ConnectionPool;
-import ch14_jdbc_jsp.dao.StudentDAO;
-import ch14_jdbc_jsp.vo.StudentVO;
+import ch14_jdbc_jsp.dao.MemberDAO;
+import ch14_jdbc_jsp.vo.Memvo;
 
 public class StudentService {
 	
@@ -19,13 +19,13 @@ public class StudentService {
 		return instance;
 	}
 	
-	private StudentDAO dao = StudentDAO.getInstance();
+	private MemberDAO dao = MemberDAO.getInstance();
 	private ConnectionPool cp = ConnectionPool.getInstance();
 	
 	// 회원목록 조회(SELECT) 메소드
-	public ArrayList<StudentVO> getStuList(){
+	public ArrayList<Memvo> getStuList(){
 		Connection conn = cp.getConnection();
-		ArrayList<StudentVO> result = new ArrayList<>();
+		ArrayList<Memvo> result = new ArrayList<>();
 		
 		try {
 			result = dao.getStuList(conn);
@@ -52,7 +52,7 @@ public class StudentService {
 		}
 	} 
 	
-	public void registStudent(StudentVO student) {
+	public void registStudent(Memvo student) {
 		Connection conn = cp.getConnection();
 		
 		try {
@@ -66,9 +66,9 @@ public class StudentService {
 	} 
 	
 	// 로그인(SELECT) 메소드
-	public StudentVO login(StudentVO student) {
+	public Memvo login(Memvo student) {
 		Connection conn = cp.getConnection();
-		StudentVO result = new StudentVO();
+		Memvo result = new Memvo();
 		
 		try {
 			result = dao.login(conn, student);

@@ -6,20 +6,90 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import ch14_jdbc_jsp.vo.StudentVO;
+import ch14_jdbc_jsp.vo.Memvo;
 
-public class StudentDAO {
+public class MemberDAO {
 	
-	private StudentDAO() {}
+	private MemberDAO() {}
 	
-	private static StudentDAO instance = new StudentDAO();
+	private static MemberDAO instance = new MemberDAO();
 	
-	public static StudentDAO getInstance() {
+	public static MemberDAO getInstance() {
 		return instance;
 	}
 	
+	/*	1. 게임	2. 내팀(my)	3. 목록(team) 4. 구단(rank)	5.종료
+		// 로그인(member) 내팀(my) 목록(play) 구단(rank)
+		2. 내팀
+		
+	public ArrayList<MemberVO> getMemList(Connection conn) throws SQLException{
+	StringBuffer query = new StringBuffer();
+	query.append("SELECT			");
+	query.append("	team_player			");
+	query.append("	team_num			");
+	query.append("	team_cm			");
+	query.append("	team_kg			");
+	query.append("	team_price			");
+	query.append("	FROM				");
+	query.append("	team				");
+-------------------------------------------------
+		3. 목록(빈 배열)
+		query.append("SELECT			");
+	query.append("	player_name			");
+	query.append("	player_team			");
+	query.append("	player_num			");
+	query.append("	player_cm			");
+	query.append("	player_kg			");
+	query.append("	player_price			");
+	query.append("	FROM				");
+	query.append("	player				");
+-------------------------------------------------	
+	PreparedStatement ps = conn.prepareStatement(query.toString());
+	ResultSet rs = ps.executeQuery();
+		
+		ArrayList<StudentVO> result = new ArrayList<>();
+		while(rs.next()) {
+
+			String stuId = rs.getString("stu_id");
+			String stuPw = rs.getString("pw");
+			String stuName = rs.getString("stu_name");
+			int stuScore = rs.getInt("stu_score");
+			StudentVO stu = new StudentVO(stuId, stuPw, stuName, stuScore);
+			
+			result.add(stu);
+		}
+		
+		ps.close();
+		rs.close();
+		
+		return result;
+	}
+	
+		public int plusScore(Connection conn, String stuId) throws SQLException {
+		StringBuffer query = new StringBuffer();
+		query.append("UPDATE 		 					");
+		query.append("		player		 			");
+		query.append("SET 								");
+		query.append("      player_num = player_num - 1	");
+		query.append("WHERE	1=1							");
+		query.append("  AND stu_id = ?					");
+		
+		PreparedStatement ps = conn.prepareStatement(query.toString());
+		
+		ps.setString(1, playername);
+		
+		int cnt = ps.executeUpdate();
+		
+		ps.close();
+		
+		return cnt;
+	}
+	
+	
+	
+	*/
 	// 학생 조회(SELECT) 메소드
-	public ArrayList<StudentVO> getStuList(Connection conn) throws SQLException{
+	public ArrayList<Memvo> getStuList(Connection conn) throws SQLException{
 		// 3. 쿼리문 작성
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT					");
@@ -42,14 +112,14 @@ public class StudentDAO {
 		
 		// 6. ResultSet에 담긴 데이터에 대해
 		// StudentVO 객체를 만들어서 리스트에 담아 리턴
-		ArrayList<StudentVO> result = new ArrayList<>();
+		ArrayList<Memvo> result = new ArrayList<>();
 		while(rs.next()) {
 			// 쿼리문 실행 결과에 해당하는 컬러명과 일치해야 함 
 			String stuId = rs.getString("stu_id");
 			String stuPw = rs.getString("pw");
 			String stuName = rs.getString("stu_name");
 			int stuScore = rs.getInt("stu_score");
-			StudentVO stu = new StudentVO(stuId, stuPw, stuName, stuScore);
+			Memvo stu = new Memvo(stuId, stuPw, stuName, stuScore);
 			
 			result.add(stu);
 //			StudentVO temp = new StudentVO();
@@ -97,7 +167,7 @@ public class StudentDAO {
 	}
 	
 	// 학생 회원가입(INSERT) 메소드
-	public int registStudent(Connection conn, StudentVO student) throws SQLException {
+	public int registStudent(Connection conn, Memvo student) throws SQLException {
 		StringBuffer query = new StringBuffer();
 		query.append("INSERT INTO students (	");
 		query.append("      stu_id				");
@@ -128,7 +198,7 @@ public class StudentDAO {
 	
 	// 로그인(SELECT) 메소드
 	// 입력받은 아이디와 비밀번호가 일치하는 하나의 데이터 리턴
-	public StudentVO login(Connection conn, StudentVO student) throws SQLException {
+	public Memvo login(Connection conn, Memvo student) throws SQLException {
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT					");
 		query.append("		stu_id				");
@@ -149,7 +219,7 @@ public class StudentDAO {
 		
 		ResultSet rs = ps.executeQuery();
 		
-		StudentVO result = new StudentVO();
+		Memvo result = new Memvo();
 		
 		// rs에 데이터가 1개 담겨있으면 while문 한번만 실행된다.
 		while(rs.next()) {

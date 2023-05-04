@@ -19,31 +19,74 @@ public class BoardService {
 	public static BoardService getInstance() {
 		return instance;
 	}
-
 	private BoardDAO dao = BoardDAO.getInstance();
 	private ConnectionPool cp = ConnectionPool.getInstance();
 
-	public void registBoard(String title, String content) {
+	// 글목록
+	public ArrayList<BoardVO> getBoList() {
 		Connection conn = cp.getConnection();
-		
+		ArrayList<BoardVO> result = new ArrayList<>();
+
 		try {
-			dao.registBoard(conn, title, content);
+			result = dao.getBoList(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			cp.releaseConnection(conn);
+
 		}
-	} 
+		return result;
+	}
+
+//	
+	public BoardVO getBoardNo(int boardNo) {
+	    Connection conn = cp.getConnection();
+	    BoardVO result = null;
+
+	    try {
+	        result = dao.getBoardNo(conn, boardNo);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        cp.releaseConnection(conn);
+	    }
+
+	    return result;
+	}
+//
 	
-	public void registBoard(BoardVO board) {
+	
+	// 글 쓰기
+	public void registBoard(String title, String content, String memId) {
 		Connection conn = cp.getConnection();
-		
+
 		try {
-			dao.registBoard(conn, board);
+			dao.registBoard(conn, title, content, memId);
+			System.out.println("글을 작성하셨습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			cp.releaseConnection(conn);
 		}
-	} 
+	}
+
+	public void selectNumTwo(String writeNumber) {
+		// TODO Auto-generated method stub
+		BoardDAO.selectNumberTwo();
+		
+	}
+
+//	
+//	public void registBoard(BoardVO board) {
+//		Connection conn = cp.getConnection();
+//		
+//		try {
+//			dao.registBoard(conn, board);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			cp.releaseConnection(conn);
+//		}
+//	} 
 }
+

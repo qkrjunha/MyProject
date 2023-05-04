@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import ch14_jdbc_jsp.service.StudentService;
 import ch14_jdbc_jsp.service.WordGameService;
-import ch14_jdbc_jsp.vo.StudentVO;
+import ch14_jdbc_jsp.vo.Memvo;
 import ch14_jdbc_jsp.vo.WordGameVO;
 
 public class JdbcMain {
@@ -59,11 +59,11 @@ public class JdbcMain {
 				System.out.print("비밀번호 : ");
 				String pw = scan.nextLine();
 				
-				StudentVO student = new StudentVO();
+				Memvo student = new Memvo();
 				student.setStuId(id);
 				student.setStuPassword(pw);
 				
-				StudentVO login = stuService.login(student);
+				Memvo login = stuService.login(student);
 				if(login.getStuId() != null) {
 					// 로그인 성공
 					System.out.println(login.getStuName() + "님 환영합니다.");
@@ -140,7 +140,7 @@ public class JdbcMain {
 							
 						}else if(select == 2) {
 							// 랭킹
-							ArrayList<StudentVO> stuList = stuService.getStuList();
+							ArrayList<Memvo> stuList = stuService.getStuList();
 							for(int i = 0; i < stuList.size(); i++) {
 								System.out.println((i+1) + "등. " 
 										+ stuList.get(i).getStuName() + " | "
@@ -173,12 +173,12 @@ public class JdbcMain {
 			
 //				stuService.registStudent(id, pw, name);
 				
-				StudentVO stu = new StudentVO(id, pw, name, 0);
+				Memvo stu = new Memvo(id, pw, name, 0);
 				stuService.registStudent(stu);
 					
 			}else if(command == 3) {
 				// 회원목록 조회
-				ArrayList<StudentVO> stuList = stuService.getStuList();
+				ArrayList<Memvo> stuList = stuService.getStuList();
 				for(int i = 0; i < stuList.size(); i++) {
 					System.out.println(stuList.get(i));
 				}

@@ -100,4 +100,3 @@ private MemberDAO() {}
 		return result;
 	}
 }
-

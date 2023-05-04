@@ -1,14 +1,14 @@
 package ch14_jdbc_jsp.vo;
 
-public class StudentVO {
+public class Memvo {
 	private String stuId;
 	private String stuPassword;
 	private String stuName;
 	private int stuScore;
 	
-	public StudentVO() {}
+	public Memvo() {}
 	
-	public StudentVO(String stuId, String stuPassword, String stuName, int stuScore) {
+	public Memvo(String stuId, String stuPassword, String stuName, int stuScore) {
 		super();
 		this.stuId = stuId;
 		this.stuPassword = stuPassword;
