@@ -143,7 +143,7 @@ public class JdbcMain {
 							ArrayList<Memvo> stuList = stuService.getStuList();
 							for(int i = 0; i < stuList.size(); i++) {
 								System.out.println((i+1) + "등. " 
-										+ stuList.get(i).getStuName() + " | "
+										+ stuList.get(i).getStuName() + "님 | "
 										+ stuList.get(i).getStuScore());
 							}
 							
@@ -181,6 +181,7 @@ public class JdbcMain {
 				ArrayList<Memvo> stuList = stuService.getStuList();
 				for(int i = 0; i < stuList.size(); i++) {
 					System.out.println(stuList.get(i));
+
 				}
 			}else if(command == 4) {
 				// 종료
